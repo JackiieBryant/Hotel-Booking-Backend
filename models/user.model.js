@@ -5,25 +5,35 @@ import bcrypt from "bcryptjs";
 
 const userSchema = new Schema({
     name: {
-        typeof: 'string',
+        type: 'string',
         trim: true,
         required: 'Name is required'
     },
     email: {
-        typeof: 'string',
+        type: 'string',
         trim: true,
         required: 'Email is required',
         unique: true,
     },
     password: {
-        typeof: 'string',
+        type: 'string',
         required: true,
         min: 6,
         max: 64
     },
-    stripe_account_id: "",
-    stripe_seller: {},
-    stripeSession: {},
+    stripe_account_id: {
+        type: String,
+        default: '',
+    },
+    stripe_seller: {
+        type: Object,
+        default: {}
+    },
+    stripeSession: {
+        type: Object,
+        default: {}
+    },
+    // stripeSession: {},
 
 },
     { timestamps: true},
