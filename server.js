@@ -3,12 +3,15 @@ import dotenv from "dotenv";
 import fs from "fs/promises"; // Utilisation de fs/promises pour utiliser les promesses
 import morgan from "morgan";
 import connectDB from "./config/database.js";
+import cors from "cors"
 dotenv.config();
 
 const app = express();
 
 //middlewares
 app.use(morgan("dev"));
+app.use(cors());
+app.use(express.json());
 
 const port = process.env.PORT || 8000;
 
